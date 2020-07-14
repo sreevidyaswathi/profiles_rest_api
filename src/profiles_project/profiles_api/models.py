@@ -51,3 +51,15 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
     def __str__(self):
         """ django uses this when it needs to convert the object to a string"""
         return self.email
+
+
+class ProfileFeedItem(models.Model):
+
+    """Profiles Status updates."""
+    user_profile=models.ForeignKey('UserProfile',on_delete=models.CASCADE)
+    status_text=models.CharField(max_length=255)
+    created_on=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        """returns string of the feed object"""
+        return status_text
